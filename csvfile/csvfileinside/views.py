@@ -2,6 +2,7 @@ import csv, io
 from . models import Profile
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 # one parameter named request
 # def profile_upload(request):
@@ -35,7 +36,8 @@ from django.contrib import messages
 #     context = {}
 #     # return render(request, template, context)
 #     return redirect('/')  # returning for dashboard
-    
+
+@csrf_protect    
 def profile_upload(request):
     template = "profile_upload.html"
     data = Profile.objects.all()
@@ -68,4 +70,4 @@ def profile_upload(request):
     # return render(request, template, context)
     return redirect('/')  # returning for dashboard
 def dashboard(request):
-    return render(request,"dash.html",{})
+    return render(request,"upload.html",{})
