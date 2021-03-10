@@ -11,9 +11,9 @@ class Profile(models.Model):
 
     Statistics_Model=models.TextField(max_length=150,unique=True,null=True)
     Sales_Volume=models.TextField(max_length=20,null=True)
-    Sales_Proportion=models.DecimalField(max_length=8,decimal_places=3,max_digits=10,null=True)
+    Sales_Proportion=models.TextField(max_length=8,null=True)
     All_Stock=models.TextField(max_length=20,null=True)
-    Stock_Proportion=models.DecimalField(max_length=8,decimal_places=3,max_digits=10,null=True)
+    Stock_Proportion=models.TextField(max_length=8,null=True)
     Average_Flow=models.DecimalField(max_length=8,decimal_places=3,max_digits=10,null=True)
     Turnover_Days=models.TextField(max_length=10,null=True)
 

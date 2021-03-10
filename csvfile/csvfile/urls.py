@@ -21,7 +21,7 @@ from csvfileinside.views import profile_upload,dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('upload-csv/', profile_upload, name="profile_upload"),
+    path('', profile_upload, name="profile_upload"),
     # path('dash/',dashboard),
-    path('',dashboard),
+   # path('',dashboard),
 ]

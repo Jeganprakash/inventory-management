@@ -3,6 +3,9 @@ from . models import Profile
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
+from django.core.serializers import serialize
+
+
 # Create your views here.
 # one parameter named request
 # def profile_upload(request):
@@ -39,12 +42,13 @@ from django.views.decorators.csrf import csrf_protect
 
 @csrf_protect    
 def profile_upload(request):
-    template = "profile_upload.html"
+    template = "upload.html"
     data = Profile.objects.all()
     prompt = {
         'order': 'Order of the CSV should be Phone_model,Sales volume, Sales Proportion, All stock, Stock proportion , Average Flow(units/day),Turnover days',
         'profiles': data    
             }
+    
     # GET request returns the value of the data with the specified key.
     if request.method == "GET":
         return render(request, template, prompt)
@@ -56,18 +60,34 @@ def profile_upload(request):
     # setup a stream which is when we loop through each line we are able to handle a data in a stream
     io_string = io.StringIO(data_set)
     next(io_string)
+    print(data_set)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Profile.objects.update_or_create(
-            Statistics_Model=column[0],
-            Sales_Volume=column[1],
-            Sales_Proportion=column[2],
-            All_Stock=column[3],
-            Stock_Proportion=column[4],
-            Average_Flow=column[5],
-            Turnover_Days=column[6]
-            )
+        obj ,created= Profile.objects.get_or_create(Statistics_Model=column[0])
+        obj.Sales_Volume=column[1]
+        obj.Sales_Proportion=column[2]
+        obj.All_Stock=column[3]
+        obj.Stock_Proportion=column[4]
+        obj.Average_Flow=column[5]
+        obj.Turnover_Days=column[6]
+        obj.save()
+        # _, created = Profile.objects.update_or_create(
+        #     Statistics_Model=column[0],
+        #     Sales_Volume=column[1],
+        #     Sales_Proportion=column[2],
+        #     All_Stock=column[3],
+        #     Stock_Proportion=column[4],
+        #     Average_Flow=column[5],
+        #     Turnover_Days=column[6]
+        #     )
     context = {}
     # return render(request, template, context)
     return redirect('/')  # returning for dashboard
 def dashboard(request):
-    return render(request,"upload.html",{})
+    return render(request,template,{})
+
+
+def fetch(request):
+    template = "upload.html"
+
+    results = serializers.serialize('json', Profile.objects.all())
+    return render(request,template,results)

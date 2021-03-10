@@ -1,4 +1,6 @@
 {% load static %}
+{% load tags %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -491,6 +493,45 @@
                 element.nextElementSibling.classList.add("h-hide");
         }
 
+        //table
+        
+            function setTable(tableData) {
+                var tabledata = {{ results|safe }};
+
+                //initialize table
+                var elem = document.getElementById("tableData");
+                elem.parentNode.classList.add("c-card--height");
+                elem.classList.remove("c-card__logo");
+                elem.classList.add("c-card__table");
+
+                document.getElementById("tableButton").classList.add("h-hide");
+
+
+                var table = new Tabulator("#tableData", {
+                    data: tabledata,           //load row data from array
+                    layout: "fitColumns",      //fit columns to width of table
+                    responsiveLayout: "hide",  //hide columns that dont fit on the table
+                    tooltips: true,            //show tool tips on cells
+                    addRowPos: "top",          //when adding a new row, add it to the top of the table
+                    history: true,             //allow undo and redo actions on the table
+                    pagination: "local",       //paginate the data
+                    paginationSize: 20,         //allow 7 rows per page of data
+                    movableColumns: true,      //allow column order to be changed
+                    resizableRows: true,       //allow row order to be changed
+                    initialSort: [             //set the initial sort order of the data
+                        { column: "name", dir: "asc" },
+                    ],
+                    columns: [                 //define the table columns
+                        { title: "Name", field: "name" },
+                        { title: "Task Progress", field: "progress" },
+                        { title: "Gender", field: "gender", width: 95 },
+                        { title: "Rating", field: "rating", hozAlign: "center", width: 100 },
+                        { title: "Color", field: "col", width: 130 },
+                        { title: "Date Of Birth", field: "dob", width: 130, sorter: "date", hozAlign: "center" },
+                        { title: "Driver", field: "car", width: 90, hozAlign: "center", formatter: "tickCross", sorter: "boolean", editor: true },
+                    ],
+                });
+            }
     </script>
 </body>
 
