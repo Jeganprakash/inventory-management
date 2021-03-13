@@ -5,10 +5,13 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
 from django.core.serializers import serialize
+from django.http import JsonResponse
 
 
 # Create your views here.
 # one parameter named request
+
+@csrf_protect 
 def warehouse_upload(request):
     # declaring template
     template = "profile_upload.html"
@@ -91,11 +94,17 @@ def profile_upload(request):
     
 def dashboard(request):
     template="base.html"
-    return render(request,template,{})
+    return render(request,template,{'func':'loadData'})
+
+def warehouse(request):
+    template="base.html"
+    return render(request,template,{'func':'warhouseData'})
 
 
 def fetch(request):
     template = "upload.html"
+    
+    return JsonResponse(list(Profile.objects.values()),safe=False)
 
-    results = serializers.serialize('json', Profile.objects.all())
-    return render(request,template,results)
+def warehouseFetch(request):
+    return JsonResponse(list(Warehouse.objects.values()),safe=False)

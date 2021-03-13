@@ -33,8 +33,10 @@
 
         </div>
         <nav class="header__nav">
-            <ul class="header__list">   
-               <a href="{% url 'admin:index' %}"><li class="header__list-elem">Sarvesh</li></a>
+            <ul class="header__list">
+                <a href="{% url 'admin:index' %}">
+                    <li class="header__list-elem">Sarvesh</li>
+                </a>
             </ul>
         </nav>
     </header>
@@ -45,12 +47,17 @@
                 <div class="sidebar__icon"><i class="fas fa-list-alt"></i>Dashboard</div>
                 <ul class="sidebar__menu">
 
-                    <li class="sidebar__list-elem sidebar__list-elem--active">Mobiles<i class="fa fa-mobile" aria-hidden="true"></i>
+                    <li class="sidebar__list-elem sidebar__list-elem--active">Mobiles<i class="fa fa-mobile"
+                            aria-hidden="true"></i>
                     </li>
-                    <li class="sidebar__list-elem">WareHouse<i class="fa fa-th" aria-hidden="true"></i></li>
+                     <a href="{% url 'warehouse' %}"><li class="sidebar__list-elem">WareHouse<i class="fa fa-th" aria-hidden="true"></i></li>  </a>
                     <li class="sidebar__list-elem">Upload Data<i class="fas fa-chart-pie"></i></li>
-                    <a href="{% url 'mymobile' %}"><li class="sidebar__list-elem">Mobiles<i class="fa fa-mobile" aria-hidden="true"></i></li></a>
-                    <a href="{% url 'mywarehouse' %}"><li class="sidebar__list-elem">WareHouse<i class="fa fa-th-large" aria-hidden="true"></i></li></a>
+                    <a href="{% url 'mymobile' %}">
+                        <li class="sidebar__list-elem">Mobiles<i class="fa fa-mobile" aria-hidden="true"></i></li>
+                    </a>
+                    <a href="{% url 'mywarehouse' %}">
+                        <li class="sidebar__list-elem">WareHouse<i class="fa fa-th-large" aria-hidden="true"></i></li>
+                    </a>
                     <li class="sidebar__list-elem"></li>
                 </ul>
             </div>
@@ -87,7 +94,7 @@
 
                 </div>
                 <div class="c-card__button" id="tableButton">
-                    <button class="c-card__submit" onclick="setTable()">
+                    <button class="c-card__submit" onclick="{{ func }}()">
                         View Data
                     </button>
                 </div>
@@ -490,44 +497,8 @@
         }
 
         //table
-        
-            function setTable(tableData) {
-                var tabledata = {{ results|safe }};
-
-                //initialize table
-                var elem = document.getElementById("tableData");
-                elem.parentNode.classList.add("c-card--height");
-                elem.classList.remove("c-card__logo");
-                elem.classList.add("c-card__table");
-
-                document.getElementById("tableButton").classList.add("h-hide");
 
 
-                var table = new Tabulator("#tableData", {
-                    data: tabledata,           //load row data from array
-                    layout: "fitColumns",      //fit columns to width of table
-                    responsiveLayout: "hide",  //hide columns that dont fit on the table
-                    tooltips: true,            //show tool tips on cells
-                    addRowPos: "top",          //when adding a new row, add it to the top of the table
-                    history: true,             //allow undo and redo actions on the table
-                    pagination: "local",       //paginate the data
-                    paginationSize: 20,         //allow 7 rows per page of data
-                    movableColumns: true,      //allow column order to be changed
-                    resizableRows: true,       //allow row order to be changed
-                    initialSort: [             //set the initial sort order of the data
-                        { column: "name", dir: "asc" },
-                    ],
-                    columns: [                 //define the table columns
-                        { title: "Name", field: "name" },
-                        { title: "Task Progress", field: "progress" },
-                        { title: "Gender", field: "gender", width: 95 },
-                        { title: "Rating", field: "rating", hozAlign: "center", width: 100 },
-                        { title: "Color", field: "col", width: 130 },
-                        { title: "Date Of Birth", field: "dob", width: 130, sorter: "date", hozAlign: "center" },
-                        { title: "Driver", field: "car", width: 90, hozAlign: "center", formatter: "tickCross", sorter: "boolean", editor: true },
-                    ],
-                });
-            }
     </script>
 </body>
 
