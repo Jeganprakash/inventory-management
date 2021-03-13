@@ -33,12 +33,8 @@
 
         </div>
         <nav class="header__nav">
-            <ul class="header__list">
-                <li class="header__list-elem">Home</li>
-                <li class="header__list-elem">About</li>
-                <li class="header__list-elem">Docs</li>
-                <li class="header__list-elem">Support</li>
-                <li class="header__list-elem">Contact</li>
+            <ul class="header__list">   
+               <a href="{% url 'admin:index' %}"><li class="header__list-elem">Sarvesh</li></a>
             </ul>
         </nav>
     </header>
@@ -46,15 +42,15 @@
     <div class="l-topcontainer">
         <aside class="sidebar">
             <div class="sidebar__sticky">
-                <div class="sidebar__icon"><i class="fas fa-list-alt"></i>Menu bar</div>
+                <div class="sidebar__icon"><i class="fas fa-list-alt"></i>Dashboard</div>
                 <ul class="sidebar__menu">
 
-                    <li class="sidebar__list-elem sidebar__list-elem--active">Mobiles<i class="fas fa-chart-line"></i>
+                    <li class="sidebar__list-elem sidebar__list-elem--active">Mobiles<i class="fa fa-mobile" aria-hidden="true"></i>
                     </li>
-                    <li class="sidebar__list-elem">WareHouse<i class="fas fa-calculator"></i></li>
+                    <li class="sidebar__list-elem">WareHouse<i class="fa fa-th" aria-hidden="true"></i></li>
                     <li class="sidebar__list-elem">Upload Data<i class="fas fa-chart-pie"></i></li>
-                    <li class="sidebar__list-elem">Mobile<i class="fas fa-cogs"></i></li>
-                    <li class="sidebar__list-elem">WareHouse<i class="far fa-id-card"></i></li>
+                    <a href="{% url 'mymobile' %}"><li class="sidebar__list-elem">Mobiles<i class="fa fa-mobile" aria-hidden="true"></i></li></a>
+                    <a href="{% url 'mywarehouse' %}"><li class="sidebar__list-elem">WareHouse<i class="fa fa-th-large" aria-hidden="true"></i></li></a>
                     <li class="sidebar__list-elem"></li>
                 </ul>
             </div>
@@ -62,7 +58,7 @@
 
         <div class="main">
             <div class="c-card c-card--heading">
-                <h2 class="c-card__heading">DASHBOARD</h2>
+                <h2 class="c-card__heading"></h2>
             </div>
             <!-- card 1 -->
             <div class="c-card">

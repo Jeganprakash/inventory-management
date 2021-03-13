@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
-
-{% block upload %}
-
-<form action="{% url 'profile_upload' %}" method="POST" enctype="multipart/form-data">
+{% comment %} {% extends 'base.html' %}
+{% block upload %} {% endcomment %}
+{%load static%}
+<html>
+<body>
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <label for="file1"> Upload a file</label>
     <input type="file" id="file1" name="file">
@@ -11,8 +12,14 @@
         <button class="c-card__submit" onclick="funct()" type="submit">Upload</button>
     </div>
 
+    <div class="imagecontainer">
+    <div class="centerimg">
+    <img src="https://reviso-wordpress-sites.s3.amazonaws.com/uploads/sites/2/inventory-management-blog.png" alt="image">
+    </div>
+</div>
+
 </form>
-
-
-
-{% endblock %}
+{% comment %} 
+{% endblock %} {% endcomment %}
+<body>
+</html>

@@ -27,7 +27,6 @@ function funct() {
     alert("File uploaded Sucessfully !");
 }
 
-
 function ConnectDb(DbDetails) {
 
     // POST request using fetch() 
