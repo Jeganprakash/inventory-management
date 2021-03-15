@@ -1,3 +1,50 @@
-body{
-    
+.outercontainer{
+    margin-top:70px;
+    margin-left:30px;
+    margin-bottom:50px;
+    height: 80%;
+    width: 40%;
+    position:fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-color:#e6e6e6;
 }
+.centerimg{
+    position:absolute;
+    transform: translate(-50%,-50%);
+    top:50%;
+    left:70%;
+}
+.form{
+    margin-top: 120px;
+    text-align: center;
+}
+.c-card__button{
+    padding-top:30px;
+}
+.c-card__submit{
+    background-color:#33cc33;
+}
+
+.custom-centered{
+    margin-left:290px;
+    margin-top:40px;
+}
+.onedata{
+    margin: 30px;
+    margin-left:250px;
+}
+/* body{
+    background-color:black;
+} */
+/* .form  a{
+    float: left;
+    display: inline-block;
+    padding:5px;
+    margin-right:17px;
+    margin-left:1px;
+    text-decoration: none;
+    color:black;
+} */

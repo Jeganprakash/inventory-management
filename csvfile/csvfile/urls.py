@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from csvfileinside.views import profile_upload,dashboard,warehouse_upload,fetch,warehouse,warehouseFetch
+from csvfileinside.views import profile_upload,dashboard,warehouse_upload,fetch,warehouse,warehouseFetch,mobileadmin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('mobiles',profile_upload,name="mymobile"),
     path('warehouse',warehouse_upload , name='mywarehouse'),
     path('mobileTable',fetch),
+    path('mobileadmin',mobileadmin,name="mymobile"),
     path('warehouseDetails',warehouse,name="warehouse"),
     path('warehouseTable',warehouseFetch)
 ]   

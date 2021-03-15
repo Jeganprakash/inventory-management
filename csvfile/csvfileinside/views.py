@@ -96,6 +96,13 @@ def dashboard(request):
     template="base.html"
     return render(request,template,{'func':'loadData'})
 
+def mobileadmin(request):
+    template="admin_dashboard.html"
+    return render(request,template)
+
+def warehouseadmin(request):
+    template=""
+
 def warehouse(request):
     template="base.html"
     return render(request,template,{'func':'warhouseData'})

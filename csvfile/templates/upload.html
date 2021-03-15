@@ -1,23 +1,48 @@
 {% comment %} {% extends 'base.html' %}
 {% block upload %} {% endcomment %}
-{%load static%}
+{% load static %}
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+{% comment %} <link rel="stylesheet" href="styles/upload.css" /> {% endcomment %}
+</head>
+
 <body>
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="file1"> Upload a file</label>
-    <input type="file" id="file1" name="file">
-    <small>Only accepts CSV files</small>
-    <div class="c-card__button">
-        <button class="c-card__submit" onclick="funct()" type="submit">Upload</button>
+    <div class="outercontainer">
+                <div class="form">
+                        <h2 id="up">Upload Only CSV files !</h2>
+                        <br>
+                        <br>
+                        <label for="file1"> Upload a file   </label>
+                        <input type="file" id="file1" name="file">
+                        <br>
+                        <br>
+                        <div class="c-card__button">
+                            <button class="c-card__submit" onclick="funct()" type="submit">Upload</button>
+                        </div>
+                </div>
+                <div class="custom-centered">
+                    <h3>(or)</h3>
+                </div>
+                <div class = "onedata">
+                    <a href="{% url 'mymobile' %}">Upload Static Data</a>
+                </div>
     </div>
-    
-
+     <script>
+        function funct() {
+    alert("File uploaded Sucessfully !");
+}
+        </script>
     <div class="imagecontainer">
     <div class="centerimg">
-    <img src="https://reviso-wordpress-sites.s3.amazonaws.com/uploads/sites/2/inventory-management-blog.png" alt="image">
+    <img src= "{% static 'images/mobile.jpg' %}" alt="image">
     </div>
-</div>
+    </div>
 
 </form>
 {% comment %} 
