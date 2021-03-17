@@ -18,6 +18,14 @@ function loadData() {
 
 function setTable(tabledata) {
 
+    tabledata.forEach(element => {
+        if(element.Turnover_Days >=30 ){
+            element.Buyable = false;
+        }
+        else{
+            element.Buyable =true;
+        }
+    });
     //initialize table
     var elem = document.getElementById("tableData");
     elem.parentNode.classList.add("c-card--height");
@@ -50,6 +58,7 @@ function setTable(tabledata) {
             { title: "Sales_Volume", field: "Sales_Volume", hozAlign: "center" },
             { title: "Stock_Proportion", field: "Stock_Proportion", hozAlign: "center" },
             { title: "Turnover_Days", field: "Turnover_Days" },
+            {title:"Buyable",field:"Buyable",formatter:"tickCross"}
         ],
     });
 
@@ -72,6 +81,26 @@ function warhouseData() {
         );
 }
 
+function Profilefetch(){
+    const url = "/piechartfetch";
+    var jk = document.getElementsByClassName("listitems");
+    console.log(jk);
+    fetch(url)
+        .then(response => response.json())
+
+        .then(json => {
+            console.log(json);
+            let i=0;
+            json.forEach(element => {
+                // console.log(element);
+                jk[i].innerHTML = element;
+                i=i+1;
+            });
+        }
+        );
+    
+
+}
 
 function setTable2(tabledata) {
 

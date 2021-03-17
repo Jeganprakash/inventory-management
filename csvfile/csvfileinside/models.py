@@ -7,7 +7,7 @@ class Profile(models.Model):
     All_Stock=models.TextField(max_length=20,null=True)
     Stock_Proportion=models.TextField(max_length=8,null=True)
     Average_Flow=models.DecimalField(max_length=8,decimal_places=3,max_digits=10,null=True)
-    Turnover_Days=models.TextField(max_length=10,null=True)
+    Turnover_Days=models.IntegerField(max_length=10,null=True)
 
     def __str__(self):
         return self.Statistics_Model
@@ -20,7 +20,7 @@ class Warehouse(models.Model):
     All_Stock=models.TextField(max_length=20)
     Stock_Proportion=models.TextField(max_length=20)
     Average_Flow=models.DecimalField(max_digits=10,decimal_places=5,null=True)
-    Turnover_Days=models.TextField(max_length=10)
+    Turnover_Days=models.IntegerField(max_length=10)
 
     def __str__(self):
         return self.Warehouse

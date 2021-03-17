@@ -97,16 +97,56 @@ def dashboard(request):
     return render(request,template,{'func':'loadData'})
 
 def mobileadmin(request):
-    template="admin_dashboard.html"
-    return render(request,template)
+    return redirect('admin/csvfileinside/profile/add/')
 
 def warehouseadmin(request):
-    template=""
+    return redirect('admin/csvfileinside/warehouse/add/')
 
 def warehouse(request):
     template="base.html"
     return render(request,template,{'func':'warhouseData'})
 
+def pie_chart(request):
+
+    labels = []
+    data = []
+    template="pie_chart.html"
+    #code online
+    alldata = Profile.objects.all()
+    # print(alldata)
+    # sorted_alldata = sorted(alldata, key= lambda Profile:Profile.Turnover_Days)
+    # #context={'sortedprice':sorted_alldata}
+    # print((sorted_alldata))
+    # Profile.objects.filter(Statistics_Model=Statistics_Model).order_by('-Turnover_Days')
+    queryset = Profile.objects.order_by('Turnover_Days')
+    print(queryset)
+    n=1
+    for city in queryset:
+        if(city.Turnover_Days<=46):
+                if(n<=5):
+                    labels.append(city.Statistics_Model)
+                    data.append(city.Turnover_Days)
+                    n=n+1
+                    print(city.Turnover_Days)
+    return render(request,template, {
+        'labels': labels,
+        'data': data,
+    })
+
+
+def piechartfetch(request):
+    labels=[]
+    data=[]
+    queryset = Profile.objects.order_by('Turnover_Days')
+    print(queryset)
+    n=1
+    for city in queryset:
+        if(city.Turnover_Days<=46):
+                if(n<=5):
+                    labels.append(city.Statistics_Model)
+                    data.append(city.Turnover_Days)
+                    n=n+1
+    return JsonResponse(labels,safe=False)
 
 def fetch(request):
     template = "upload.html"

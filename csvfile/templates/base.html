@@ -24,22 +24,24 @@
     <style>
 
     </style>
+    
 
 </head>
 
-<body>
+<body onload="Profilefetch()">
     <header class="header">
         <div class="header__logo">
 
         </div>
         <nav class="header__nav">
             <ul class="header__list">
-                <a href="{% url 'admin:index' %}">
-                    <li class="header__list-elem">Sarvesh</li>
+                    <a href="{% url 'pie-chart' %}">Pie Chart Embedded</a>
+                    <a href="{% url 'admin:index' %}"> <li class="header__list-elem">Sarvesh</li>
                 </a>
             </ul>
         </nav>
     </header>
+
 
     <div class="l-topcontainer">
         <aside class="sidebar">
@@ -78,13 +80,14 @@
 
             <!-- card 2 -->
             <div class="c-card">
-                <div class="c-card__logo" data-name="spreadsheet">
-
-                </div>
-                <div class="c-card__button">
-                    <a class="c-card__submit" href="#popupid">
-                        Description
-                    </a>
+                <div class="Top5">
+                    <ol>
+                    <li class="listitems"></li>
+                    <li class="listitems"></li>
+                    <li class="listitems"></li>
+                    <li class="listitems"></li>
+                    <li class="listitems"></li>
+                    </ol>
                 </div>
             </div>
 
