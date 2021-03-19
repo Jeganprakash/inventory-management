@@ -112,7 +112,7 @@ def profile_upload(request):
     
 def dashboard(request):
     template="base.html"
-    return render(request,template,{'func':'loadData','function':'Profilefetch()'})
+    return render(request,template,{'func':'loadData','function':'Profilefetch()','type':'Mobiles','urlData':'pie-chart'})
 
 def mobileadmin(request):
     return redirect('admin/csvfileinside/profile/add/')
@@ -122,28 +122,24 @@ def warehouseadmin(request):
 
 def warehouse(request):
     template="base.html"
-    return render(request,template,{'func':'warhouseData','function':'Warehousefetch()'})
+    return render(request,template,{'func':'warhouseData','function':'Warehousefetch()','type':'WareHouses','urlData':'ware-chart'})
 
 def pie_chart(request):
 
     labels = []
     data = []
     template="pie_chart.html"
-    #code online
     alldata = Profile.objects.all()
-    # print(alldata)
-    # sorted_alldata = sorted(alldata, key= lambda Profile:Profile.Turnover_Days)
-    # #context={'sortedprice':sorted_alldata}
-    # print((sorted_alldata))
-    # Profile.objects.filter(Statistics_Model=Statistics_Model).order_by('-Turnover_Days')
     queryset = Profile.objects.order_by('Turnover_Days')
     print(queryset)
     n=1
     for city in queryset:
         try:
-            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
+            if((city.Turnover_Days)<=14 and (city.Turnover_Days) > 0 ):
                     if(n<=5):
                         labels.append(city.Statistics_Model)
+                        total = 100
+                        city.Turnover_Days = total - city.Turnover_Days
                         data.append(city.Turnover_Days)
                         n=n+1
                         print(city.Turnover_Days)
@@ -162,7 +158,7 @@ def warehousepiechartfetch(request):
     n=1
     for city in queryset:
         try:
-            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
+            if((city.Turnover_Days)<=20 and (city.Turnover_Days) > 0 ):
                     if(n<=5):
                         labels.append(city.Warehouse)
                         data.append(city.Turnover_Days)
@@ -181,7 +177,7 @@ def piechartfetch(request):
     n=1
     for city in queryset:
         try:
-            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
+            if((city.Turnover_Days)<=20 and (city.Turnover_Days) > 0 ):
                     if(n<=5):
                         labels.append(city.Statistics_Model)
                         data.append(city.Turnover_Days)
@@ -200,10 +196,12 @@ def warehousepiefetch(request):
     queryset = Warehouse.objects.order_by('Turnover_Days')
     n=1
     for city in queryset:
-            print(city.Turnover_Days)
-            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
+            #print(city.Turnover_Days)
+            if((city.Turnover_Days)<=14 and (city.Turnover_Days) > 0 ):
                     if(n<=5):
                         labels.append(city.Warehouse)
+                        total = 100
+                        city.Turnover_Days = total - city.Turnover_Days
                         data.append(city.Turnover_Days)
                         n=n+1
                     # print(city.Turnover_Days)

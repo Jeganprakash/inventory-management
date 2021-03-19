@@ -21,10 +21,6 @@
 
 
     <title>CRM</title>
-    <style>
-
-    </style>
-    
 
 </head>
 
@@ -35,9 +31,11 @@
         </div>
         <nav class="header__nav">
             <ul class="header__list">
-                    <a href="{% url 'pie-chart' %}">Mobiles pie chart</a>
-                    <a href="{% url 'ware-chart' %}">warehouse Pie chart</a>
-                    <a href="{% url 'admin:index' %}"> <li class="header__list-elem">Sarvesh</li>
+                {% comment %} <a href="{% url 'pie-chart' %}">Mobiles pie chart</a>
+                <a href="{% url 'ware-chart' %}">warehouse Pie chart</a> {% endcomment %}
+                <a href="{% url 'admin:index' %}">
+                    <li class="header__list-elem">Sarvesh</li>
+                    {% comment %} <i class="fa fa-user" aria-hidden="true"></i> {% endcomment %}
                 </a>
             </ul>
         </nav>
@@ -50,16 +48,35 @@
                 <div class="sidebar__icon"><i class="fas fa-list-alt"></i>Dashboard</div>
                 <ul class="sidebar__menu">
 
+                    {% if type == 'Mobiles' %}
+                    <a href="{% url 'dash' %}">
                     <li class="sidebar__list-elem sidebar__list-elem--active">Mobiles<i class="fa fa-mobile"
                             aria-hidden="true"></i>
                     </li>
-                     <a href="{% url 'warehouse' %}"><li class="sidebar__list-elem">WareHouse<i class="fa fa-th" aria-hidden="true"></i></li>  </a>
-                    <li class="sidebar__list-elem">Upload Data<i class="fas fa-chart-pie"></i></li>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'dash' %}">
+                    <li class="sidebar__list-elem">Mobiles<i class="fa fa-mobile"
+                            aria-hidden="true"></i>
+                    </li>
+                    </a>
+                    {% endif %}
+
+                     {% if type == 'WareHouses' %}
+                    <a href="{% url 'warehouse' %}">
+                        <li class="sidebar__list-elem sidebar__list-elem--active">WareHouse<i class="fa fa-th" aria-hidden="true"></i></li>
+                    </a>
+                     {% else %}
+                     <a href="{% url 'warehouse' %}">
+                        <li class="sidebar__list-elem">WareHouse<i class="fa fa-th" aria-hidden="true"></i></li>
+                    </a>
+                     {% endif %}
+                    {% comment %} <li class="sidebar__list-elem">Upload Data<i class="fas fa-chart-pie"></i></li> {% endcomment %}
                     <a href="{% url 'mymobile' %}">
-                        <li class="sidebar__list-elem">Mobiles<i class="fa fa-mobile" aria-hidden="true"></i></li>
+                        <li class="sidebar__list-elem">Mobiles Data Upload<i class="fa fa-mobile" aria-hidden="true"></i></li>
                     </a>
                     <a href="{% url 'mywarehouse' %}">
-                        <li class="sidebar__list-elem">WareHouse<i class="fa fa-th-large" aria-hidden="true"></i></li>
+                        <li class="sidebar__list-elem">WareHouse Data Upload<i class="fa fa-th-large" aria-hidden="true"></i></li>
                     </a>
                     <li class="sidebar__list-elem"></li>
                 </ul>
@@ -67,31 +84,48 @@
         </aside>
 
         <div class="main">
-            <div class="c-card c-card--heading">
+            {% comment %} <div class="c-card c-card--heading">
                 <h2 class="c-card__heading"></h2>
-            </div>
+            </div> {% endcomment %}
             <!-- card 1 -->
             <div class="c-card">
-                <div class="card__logo" data-name="integrateDB">
+                <div class="c-card__logo" data-name="spreadsheet">
 
                 </div>
-                {% block upload %}
-                {% endblock %}
+                <div class="c-card__button" id="tableButton">
+                    <button class="c-card__submit" onclick="location.href = '{% url urlData %}'">
+                        View Report
+                    </button>
+                </div>
             </div>
 
             <!-- card 2 -->
             <div class="c-card">
+
                 <div class="Top5">
-                    <ol>
-                    <li class="listitems"></li>
-                    <li class="listitems"></li>
-                    <li class="listitems"></li>
-                    <li class="listitems"></li>
-                    <li class="listitems"></li>
+                    <h2 class="c-card__heading" id="blink">Top {{ type }}</h2>
+                    <ol class="sidebar__menu" style="list-style:decimal;list-style-position: outside;">
+                        <li class="listitems" style="color:black">1. </li>
+                        <li class="listitems" style="color:black">2. </li>
+                        <li class="listitems" style="color:black">3. </li>
+                        <li class="listitems" style="color:black">4. </li>
+                        <li class="listitems" style="color:black">5. </li>
                     </ol>
                 </div>
             </div>
-
+            
+            <div class="c-card__button" id="tableButton">
+             {% if type == 'WareHouses' %}
+                    <button class="c-card__submit" style ="background:grey" onclick="location.href =  'admin/csvfileinside/warehouse/'">
+                        Edit Data
+                    </button>
+                     {% else %}
+                     <button class="c-card__submit" style ="background:grey" onclick="location.href =  'admin/csvfileinside/profile/'">
+                        Edit Data
+                    </button>
+                     {% endif %}
+                   
+                </div>
             <!-- card 3 -->
             <div class="c-card c-card--full-width ">
                 <div class="c-card__logo striped highlight" id="tableData" data-name="viewdata">

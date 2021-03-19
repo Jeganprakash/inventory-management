@@ -27,24 +27,16 @@
 .c-card__submit{
     background-color:#33cc33;
 }
-
 .custom-centered{
-    margin-left:290px;
-    margin-top:40px;
+    margin-left:260px;
+    margin-top:30px;
 }
 .onedata{
-    margin: 30px;
-    margin-left:250px;
+    margin: 10px;
+    margin-left:0px;
 }
-/* body{
-    background-color:black;
-} */
-/* .form  a{
-    float: left;
-    display: inline-block;
-    padding:5px;
-    margin-right:17px;
-    margin-left:1px;
-    text-decoration: none;
-    color:black;
-} */
+.hj{
+    align-items: center;
+}
+
+

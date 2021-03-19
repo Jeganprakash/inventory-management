@@ -17,11 +17,11 @@ function loadData() {
 function setTable(tabledata) {
 
     tabledata.forEach(element => {
-        if(element.Turnover_Days >=30 ){
+        if (element.Turnover_Days >= 30) {
             element.Buyable = false;
         }
-        else{
-            element.Buyable =true;
+        else {
+            element.Buyable = true;
         }
     });
     //initialize table
@@ -56,7 +56,7 @@ function setTable(tabledata) {
             { title: "Sales_Volume", field: "Sales_Volume", hozAlign: "center" },
             { title: "Stock_Proportion", field: "Stock_Proportion", hozAlign: "center" },
             { title: "Turnover_Days", field: "Turnover_Days" },
-            {title:"Buyable",field:"Buyable",formatter:"tickCross"}
+            { title: "Buyable", field: "Buyable", formatter: "tickCross" }
         ],
     });
 
@@ -79,7 +79,7 @@ function warhouseData() {
         );
 }
 
-function Profilefetch(){
+function Profilefetch() {
     const url = "/piechartfetch";
     var jk = document.getElementsByClassName("listitems");
     console.log(jk);
@@ -88,16 +88,16 @@ function Profilefetch(){
 
         .then(json => {
             console.log(json);
-            let i=0;
+            let i = 0;
             json.forEach(element => {
                 // console.log(element);
-                jk[i].innerHTML = element;
-                i=i+1;
+                jk[i].innerText += element;
+                i = i + 1;
             });
         }
         );
 }
-function Warehousefetch(){
+function Warehousefetch() {
     const url = "/warehousepiefetch";
     var jk = document.getElementsByClassName("listitems");
     console.log(jk);
@@ -106,11 +106,11 @@ function Warehousefetch(){
 
         .then(json => {
             console.log(json);
-            let i=0;
+            let i = 0;
             json.forEach(element => {
                 // console.log(element);
-                jk[i].innerHTML = element;
-                i=i+1;
+                jk[i].innerText += element;
+                i = i + 1;
             });
         }
         );
@@ -118,11 +118,11 @@ function Warehousefetch(){
 
 function setTable2(tabledata) {
     tabledata.forEach(element => {
-        if(element.Turnover_Days >=30 ){
+        if (element.Turnover_Days >= 30) {
             element.Status = false;
         }
-        else{
-            element.Status =true;
+        else {
+            element.Status = true;
         }
     });
     //initialize table
@@ -156,7 +156,7 @@ function setTable2(tabledata) {
             { title: "Sales_Volume", field: "Sales_Volume", hozAlign: "center" },
             { title: "Stock_Proportion", field: "Stock_Proportion", hozAlign: "center" },
             { title: "Turnover_Days", field: "Turnover_Days" },
-            {title:"Status",field:"Status",formatter:"tickCross"},
+            { title: "Status", field: "Status", formatter: "tickCross" },
         ],
     });
 
