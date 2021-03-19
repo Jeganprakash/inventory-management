@@ -20,7 +20,7 @@
     <script src="{% static 'js/integration.js' %}"></script>
 
 
-    <title>CRM</title>
+    <title>Inventory Management</title>
 
 </head>
 
@@ -34,7 +34,7 @@
                 {% comment %} <a href="{% url 'pie-chart' %}">Mobiles pie chart</a>
                 <a href="{% url 'ware-chart' %}">warehouse Pie chart</a> {% endcomment %}
                 <a href="{% url 'admin:index' %}">
-                    <li class="header__list-elem">Sarvesh</li>
+                    <li class="header__list-elem" id="kk" style="float:right">Sarvesh</li>
                     {% comment %} <i class="fa fa-user" aria-hidden="true"></i> {% endcomment %}
                 </a>
             </ul>
@@ -114,13 +114,13 @@
                 </div>
             </div>
             
-            <div class="c-card__button" id="tableButton">
+            <div class="c-card__button">
              {% if type == 'WareHouses' %}
-                    <button class="c-card__submit" style ="background:grey" onclick="location.href =  'admin/csvfileinside/warehouse/'">
+                    <button class="c-card__submit" id="tableButton"  onclick="location.href =  'admin/csvfileinside/warehouse/'">
                         Edit Data
                     </button>
                      {% else %}
-                     <button class="c-card__submit" style ="background:grey" onclick="location.href =  'admin/csvfileinside/profile/'">
+                     <button class="c-card__submit"id="tableButton"  onclick="location.href =  'admin/csvfileinside/profile/'">
                         Edit Data
                     </button>
                      {% endif %}

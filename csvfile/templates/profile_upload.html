@@ -28,24 +28,14 @@
                     <h3>(or)</h3>
             </div>
             <div class = "onedata">
-                    <a href="{% url 'warehouseadmin' %}">Upload Static Data</a>
+                    <h3><a href="{% url 'warehouseadmin' %}">Upload Static Data</a></h3>
             </div>
-
-            {% comment %} <div class ="hj">
-                <p>Please upload in the format Warehouse </p>
-                <ul>
-                <li>Warehouse</li>
-                <li>Warehouse_ID</li>
-                <li>Sales_Volume</li>
-                <li>Sales_Proportion</li>
-                <li>All_Stock</li>
-                <li>Stock_Proportion</li>
-                <li>Average_Flow</li>
-                <li>Turnover_Days</li>
-                </ul>
-            </div> {% endcomment %}
     </div>
-    
+         <script>
+        function funct() {
+    alert("File uploaded Sucessfully !");
+}
+        </script>
     <div class="imagecontainer">
     <div class="centerimg">
     <img src= "{% static 'images/warehouse.png' %}" alt="image">
