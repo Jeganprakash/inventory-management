@@ -37,11 +37,23 @@ def warehouse_upload(request):
         # )
             objw ,created=Warehouse.objects.get_or_create(Warehouse=column[0])
             objw.Warehouse_ID=column[1]
+            if(objw.Warehouse_ID == '-' or objw.Warehouse_ID == ""):
+                objw.Warehouse_ID=0
             objw.Sales_Volume = column[2]
+            if(objw.Sales_Volume == '-' or objw.Sales_Volume == ""):
+                objw.Sales_Volume=0
             objw.Sales_Proportion=column[3]
+            if(objw.Sales_Proportion == '-' or objw.Sales_Proportion== ""):
+                objw.Sales_Proportion=0
             objw.All_Stock=column[4]
+            if(objw.All_Stock == '-' or objw.All_Stock == ""):
+                objw.All_Stock=0
             objw.Stock_Proportion=column[5]
+            if(objw.Stock_Proportion == '-' or objw.Stock_Proportion == ""):
+                objw.Stock_Proportion=0
             objw.Average_Flow=column[6]
+            if(objw.Average_Flow == '-' or objw.Average_Flow == ""):
+                objw.Average_Flow=0
             objw.Turnover_Days=column[7]
             if(objw.Turnover_Days == '-' or objw.Turnover_Days == ""):
                 objw.Turnover_Days=0
@@ -75,11 +87,23 @@ def profile_upload(request):
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
         obj ,created= Profile.objects.get_or_create(Statistics_Model=column[0])
         obj.Sales_Volume=column[1]
+        if(obj.Sales_Volume == '-' or obj.Sales_Volume == ""):
+                obj.Sales_Volume=0
         obj.Sales_Proportion=column[2]
+        if(obj.Sales_Proportion == '-' or obj.Sales_Proportion == ""):
+                obj.Sales_Proportion=0
         obj.All_Stock=column[3]
+        if(obj.All_Stock == '-' or obj.All_Stock == ""):
+                obj.All_Stock=0
         obj.Stock_Proportion=column[4]
+        if(obj.Stock_Proportion == '-' or obj.Stock_Proportion == ""):
+                obj.Stock_Proportion=0
         obj.Average_Flow=column[5]
+        if(obj.Average_Flow == '-' or obj.Average_Flow == ""):
+                obj.Average_Flow=0
         obj.Turnover_Days=column[6]
+        if(obj.Turnover_Days == '-' or obj.Turnover_Days == ""):
+                obj.Turnover_Days=0
         obj.save()
 
     context = {}
@@ -117,7 +141,7 @@ def pie_chart(request):
     n=1
     for city in queryset:
         try:
-            if(city.Turnover_Days<=14):
+            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
                     if(n<=5):
                         labels.append(city.Statistics_Model)
                         data.append(city.Turnover_Days)
@@ -136,12 +160,6 @@ def warehousepiechartfetch(request):
     queryset = Warehouse.objects.order_by('Turnover_Days')
     print(queryset)
     n=1
-    # for city in queryset:
-    #     if(city.Turnover_Days<=14):
-    #             if(n<=5):
-    #                 labels.append(city.Warehouse)
-    #                 data.append(city.Turnover_Days)
-    #                 n=n+1
     for city in queryset:
         try:
             if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
@@ -163,7 +181,7 @@ def piechartfetch(request):
     n=1
     for city in queryset:
         try:
-            if(city.Turnover_Days<=46):
+            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
                     if(n<=5):
                         labels.append(city.Statistics_Model)
                         data.append(city.Turnover_Days)
