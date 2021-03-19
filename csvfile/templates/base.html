@@ -28,14 +28,15 @@
 
 </head>
 
-<body onload="Profilefetch()">
+<body onload={{ function }}>
     <header class="header">
         <div class="header__logo">
 
         </div>
         <nav class="header__nav">
             <ul class="header__list">
-                    <a href="{% url 'pie-chart' %}">Pie Chart Embedded</a>
+                    <a href="{% url 'pie-chart' %}">Mobiles pie chart</a>
+                    <a href="{% url 'ware-chart' %}">warehouse Pie chart</a>
                     <a href="{% url 'admin:index' %}"> <li class="header__list-elem">Sarvesh</li>
                 </a>
             </ul>

@@ -14,8 +14,6 @@ function loadData() {
         );
 }
 
-
-
 function setTable(tabledata) {
 
     tabledata.forEach(element => {
@@ -98,12 +96,35 @@ function Profilefetch(){
             });
         }
         );
-    
+}
+function Warehousefetch(){
+    const url = "/warehousepiefetch";
+    var jk = document.getElementsByClassName("listitems");
+    console.log(jk);
+    fetch(url)
+        .then(response => response.json())
 
+        .then(json => {
+            console.log(json);
+            let i=0;
+            json.forEach(element => {
+                // console.log(element);
+                jk[i].innerHTML = element;
+                i=i+1;
+            });
+        }
+        );
 }
 
 function setTable2(tabledata) {
-
+    tabledata.forEach(element => {
+        if(element.Turnover_Days >=30 ){
+            element.Status = false;
+        }
+        else{
+            element.Status =true;
+        }
+    });
     //initialize table
     var elem = document.getElementById("tableData");
     elem.parentNode.classList.add("c-card--height");
@@ -135,6 +156,7 @@ function setTable2(tabledata) {
             { title: "Sales_Volume", field: "Sales_Volume", hozAlign: "center" },
             { title: "Stock_Proportion", field: "Stock_Proportion", hozAlign: "center" },
             { title: "Turnover_Days", field: "Turnover_Days" },
+            {title:"Status",field:"Status",formatter:"tickCross"},
         ],
     });
 

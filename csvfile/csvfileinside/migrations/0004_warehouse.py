@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('All_Stock', models.TextField(max_length=20)),
                 ('Stock_Proportion', models.TextField(max_length=20)),
                 ('Average_Flow', models.DecimalField(decimal_places=5, max_digits=10, null=True)),
-                ('Turnover_Days', models.TextField(max_length=10)),
+                ('Turnover_Days', models.IntegerField(max_length=10)),
             ],
         ),
     ]

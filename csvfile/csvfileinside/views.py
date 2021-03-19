@@ -43,8 +43,10 @@ def warehouse_upload(request):
             objw.Stock_Proportion=column[5]
             objw.Average_Flow=column[6]
             objw.Turnover_Days=column[7]
+            if(objw.Turnover_Days == '-' or objw.Turnover_Days == ""):
+                objw.Turnover_Days=0
             objw.save()
-        
+
     context = {}
     # return render(request, template, context)
     return redirect('/') # returning for dashboard
@@ -79,22 +81,14 @@ def profile_upload(request):
         obj.Average_Flow=column[5]
         obj.Turnover_Days=column[6]
         obj.save()
-        # _, created = Profile.objects.update_or_create(
-        #     Statistics_Model=column[0],
-        #     Sales_Volume=column[1],
-        #     Sales_Proportion=column[2],
-        #     All_Stock=column[3],
-        #     Stock_Proportion=column[4],
-        #     Average_Flow=column[5],
-        #     Turnover_Days=column[6]
-        #     )
+
     context = {}
     # return render(request, template, context)
     return redirect('/')  # returning for dashboard
     
 def dashboard(request):
     template="base.html"
-    return render(request,template,{'func':'loadData'})
+    return render(request,template,{'func':'loadData','function':'Profilefetch()'})
 
 def mobileadmin(request):
     return redirect('admin/csvfileinside/profile/add/')
@@ -104,7 +98,7 @@ def warehouseadmin(request):
 
 def warehouse(request):
     template="base.html"
-    return render(request,template,{'func':'warhouseData'})
+    return render(request,template,{'func':'warhouseData','function':'Warehousefetch()'})
 
 def pie_chart(request):
 
@@ -122,16 +116,43 @@ def pie_chart(request):
     print(queryset)
     n=1
     for city in queryset:
-        if(city.Turnover_Days<=46):
-                if(n<=5):
-                    labels.append(city.Statistics_Model)
-                    data.append(city.Turnover_Days)
-                    n=n+1
-                    print(city.Turnover_Days)
+        try:
+            if(city.Turnover_Days<=14):
+                    if(n<=5):
+                        labels.append(city.Statistics_Model)
+                        data.append(city.Turnover_Days)
+                        n=n+1
+                        print(city.Turnover_Days)
+        except:
+            pass
     return render(request,template, {
         'labels': labels,
         'data': data,
     })
+
+def warehousepiechartfetch(request):
+    labels=[]
+    data=[]
+    queryset = Warehouse.objects.order_by('Turnover_Days')
+    print(queryset)
+    n=1
+    # for city in queryset:
+    #     if(city.Turnover_Days<=14):
+    #             if(n<=5):
+    #                 labels.append(city.Warehouse)
+    #                 data.append(city.Turnover_Days)
+    #                 n=n+1
+    for city in queryset:
+        try:
+            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
+                    if(n<=5):
+                        labels.append(city.Warehouse)
+                        data.append(city.Turnover_Days)
+                        n=n+1
+        except:
+            pass
+    return JsonResponse(labels,safe=False)
+
 
 
 def piechartfetch(request):
@@ -141,12 +162,38 @@ def piechartfetch(request):
     print(queryset)
     n=1
     for city in queryset:
-        if(city.Turnover_Days<=46):
-                if(n<=5):
-                    labels.append(city.Statistics_Model)
-                    data.append(city.Turnover_Days)
-                    n=n+1
+        try:
+            if(city.Turnover_Days<=46):
+                    if(n<=5):
+                        labels.append(city.Statistics_Model)
+                        data.append(city.Turnover_Days)
+                        n=n+1
+        except:
+            pass
     return JsonResponse(labels,safe=False)
+
+def warehousepiefetch(request):
+    print("Hi")
+    labels = []
+    data = []
+    template="pie_chart.html"
+
+    alldata = Warehouse.objects.all()
+    queryset = Warehouse.objects.order_by('Turnover_Days')
+    n=1
+    for city in queryset:
+            print(city.Turnover_Days)
+            if((city.Turnover_Days)<=46 and (city.Turnover_Days) > 0 ):
+                    if(n<=5):
+                        labels.append(city.Warehouse)
+                        data.append(city.Turnover_Days)
+                        n=n+1
+                    # print(city.Turnover_Days)
+    return render(request,template, {
+        'labels': labels,
+        'data': data,
+    })
+
 
 def fetch(request):
     template = "upload.html"

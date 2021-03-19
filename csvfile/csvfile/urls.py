@@ -17,17 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from csvfileinside.views import profile_upload,dashboard,warehouse_upload,fetch,warehouse,warehouseFetch,mobileadmin,pie_chart,piechartfetch
+from csvfileinside.views import profile_upload,dashboard,warehouse_upload,fetch,warehouse,warehouseFetch,mobileadmin,pie_chart,piechartfetch,warehousepiefetch,warehousepiechartfetch
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard),
     path('pie-chart/', pie_chart, name='pie-chart'), 
+    path('ware-chart/',warehousepiefetch,name='ware-chart'),
     path('mobiles',profile_upload,name="mymobile"),
     path('warehouse',warehouse_upload , name='mywarehouse'),
     path('mobileTable',fetch),
     path('piechartfetch',piechartfetch),
-    # path('mobileadmin',mobileadmin,name="mymobile"),
+    path('warehousepiefetch',warehousepiechartfetch),
     path('admin/csvfileinside/profile/add/',mobileadmin, name="profileadmin"),
     path('admin/csvfileinside/warehouse/add/',mobileadmin, name="warehouseadmin"),
     path('warehouseDetails',warehouse,name="warehouse"),

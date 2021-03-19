@@ -9,7 +9,9 @@ body {
   background: #d6d8d8;
   position: relative;
 }
-
+a{
+  text-decoration: none;
+}
 .header {
   height: 10vh;
   display: -webkit-box;
