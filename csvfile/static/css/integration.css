@@ -5,6 +5,22 @@
           box-sizing: border-box;
 }
 
+.listitems{
+  font-size: 15px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0.45em 0.75em;
+ 
+  color: black;
+  list-style:circle;
+  font-weight: bolder;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 body {
   background: #d6d8d8;
   position: relative;

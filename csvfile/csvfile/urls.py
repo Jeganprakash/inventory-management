@@ -21,7 +21,7 @@ from csvfileinside.views import profile_upload,dashboard,warehouse_upload,fetch,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', dashboard),
+    path('', dashboard,name="dash"),
     path('pie-chart/', pie_chart, name='pie-chart'), 
     path('ware-chart/',warehousepiefetch,name='ware-chart'),
     path('mobiles',profile_upload,name="mymobile"),

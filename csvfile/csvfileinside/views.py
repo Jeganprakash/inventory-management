@@ -88,7 +88,7 @@ def profile_upload(request):
     
 def dashboard(request):
     template="base.html"
-    return render(request,template,{'func':'loadData','function':'Profilefetch()'})
+    return render(request,template,{'func':'loadData','function':'Profilefetch()','type':'Mobiles','urlData':'pie-chart'})
 
 def mobileadmin(request):
     return redirect('admin/csvfileinside/profile/add/')
@@ -98,7 +98,7 @@ def warehouseadmin(request):
 
 def warehouse(request):
     template="base.html"
-    return render(request,template,{'func':'warhouseData','function':'Warehousefetch()'})
+    return render(request,template,{'func':'warhouseData','function':'Warehousefetch()','type':'WareHouses','urlData':'ware-chart'})
 
 def pie_chart(request):
 
