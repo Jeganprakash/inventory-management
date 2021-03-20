@@ -21,39 +21,35 @@
           justify-content: space-between;
 }
 
-/* body {
+body {
   background: #162B32;
   position: relative;
-} */
+}
 a{
   text-decoration: none;
 }
 .header {
-  height: 10vh;
+  height: 7vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: white;
+  background: #162B32 ;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.header__logo {
-  height: 80%;
-  width: 20%;
-  background: white url("images/websitelogo.png") no-repeat center/contain;
-}
-
 .header__nav {
-  background: white;
+  background:#162b32;
   width: 500px;
-  margin-right: 70px;
+  margin-right:0px;
 }
-
+#dashb{
+  color:#ffffff;
+}
 .header__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,28 +59,30 @@ a{
   font-size: 20px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: brown;
+  margin-right: 5px;
   padding: 0px 0px 0px 0px;
   font-weight: bolder;
 }
 
 .header__list-elem {
-  margin-left: 20px;
+  margin-left:240px;
   list-style: none;
+  color:#ffffff;
 }
 
 
 .l-topcontainer {
-  height: 90vh;
+  height:120vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #d6d8d8;
+  background: #ffffff;
 }
 
 .sidebar {
   height: 150%;
-  width: 20%;
+  width: 30%;
   max-width: 250px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#1a7ebe), color-stop(#2b8ccd), color-stop(#3a9bdb), color-stop(#48aaea), to(#55b9f9));
   background-image: linear-gradient(to bottom, #1a7ebe, #2b8ccd, #3a9bdb, #48aaea, #55b9f9);
@@ -140,8 +138,8 @@ a{
 .main {
   height: 100%;
   width: 100%;
-  max-width: 1600px;
-  background-color: #d6d8d8;
+  /* max-width: 1600px; */
+  background-color: #162B32;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,6 +185,7 @@ a{
 }
 
 .c-card__logo[data-name="spreadsheet"] {
+  
   background: url("../images/spreadsheet.svg") no-repeat center/contain;
 }
 
@@ -199,6 +198,7 @@ a{
 }
 
 .c-card__submit {
+  /* position: fixed; */
   height: 50px;
   width: 220px;
   font-size: 18px;
@@ -455,20 +455,23 @@ a{
 #tableButton {
   background-color:#26de81;
 }
+.header__logo{
+  margin-left: 420px;
+}
 /*# sourceMappingURL=integration.css.map */
 
-h2{
+/* h2{
   color: green;
   }
   .c-card__heading{
   animation:blinking 1s infinite;
   }
   @keyframes blinking {
-  0%{                      color: blue;       }
+  0%{                      color: green;       }
   50%{    color: transparent;        }
   100%{  color: black;     }
-  }
-
-  .header__list-elem{
-    color:#223777;
-  }
+  } */
+.Top5 .sidebar__menu li{
+  font-size: 20px;
+  align-items: center;
+}

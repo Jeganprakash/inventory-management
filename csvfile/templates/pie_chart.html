@@ -3,17 +3,17 @@
 <html>
 <head>
 <style>
-body{
-  
+ #container{
+  position:absolute;
+  top:48%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 </style>
 </head>
 
 <body>
   <div id="container" style="width: 70%;">
-  <br>
-  <br>
-  <br>
     <canvas id="pie-chart"></canvas>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
@@ -24,11 +24,12 @@ body{
         datasets: [{
           data: {{ data|safe }},
           backgroundColor: [
-            '#e60000', ' #ffff00', '#0066ff', '#ff66ff', '#ff9933'
+            '#111144', '#661166', '#881111', '#ff66ff', '#ff9933' ,'#253996','#d9534f' ,'#a78a6d','#5cb85c','#fff46c','#428bca'
           ],
           label: ''
         }],
         labels: {{ labels|safe }}
+      
       },
       options: {
         responsive: true

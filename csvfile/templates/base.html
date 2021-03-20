@@ -27,14 +27,14 @@
 <body onload={{ function }}>
     <header class="header">
         <div class="header__logo">
-
+           <h2 style="color:#ffffff" id="srisai"> SRI SAI COMMUNICATIONS </h2>
         </div>
         <nav class="header__nav">
             <ul class="header__list">
                 {% comment %} <a href="{% url 'pie-chart' %}">Mobiles pie chart</a>
                 <a href="{% url 'ware-chart' %}">warehouse Pie chart</a> {% endcomment %}
                 <a href="{% url 'admin:index' %}">
-                    <li class="header__list-elem" id="kk" style="float:right">Sarvesh</li>
+                   <li class="header__list-elem">Sarvesh <i class='far fa-user-circle'></i></li>
                     {% comment %} <i class="fa fa-user" aria-hidden="true"></i> {% endcomment %}
                 </a>
             </ul>
@@ -45,7 +45,7 @@
     <div class="l-topcontainer">
         <aside class="sidebar">
             <div class="sidebar__sticky">
-                <div class="sidebar__icon"><i class="fas fa-list-alt"></i>Dashboard</div>
+                <div class="sidebar__icon" id="dashb"><i class="fas fa-list-alt"></i>Dashboard</div>
                 <ul class="sidebar__menu">
 
                     {% if type == 'Mobiles' %}
@@ -92,7 +92,7 @@
                 <div class="c-card__logo" data-name="spreadsheet">
 
                 </div>
-                <div class="c-card__button" id="tableButton">
+                <div class="c-card__button">
                     <button class="c-card__submit" onclick="location.href = '{% url urlData %}'">
                         View Report
                     </button>
@@ -103,7 +103,7 @@
             <div class="c-card">
 
                 <div class="Top5">
-                    <h2 class="c-card__heading" id="blink">Top {{ type }}</h2>
+                    <h1 class="c-card__heading" id="blink">Top {{ type }}</h1>
                     <ol class="sidebar__menu" style="list-style:decimal;list-style-position: outside;">
                         <li class="listitems" style="color:black">1. </li>
                         <li class="listitems" style="color:black">2. </li>
@@ -116,11 +116,11 @@
             
             <div class="c-card__button">
              {% if type == 'WareHouses' %}
-                    <button class="c-card__submit" id="tableButton"  onclick="location.href =  'admin/csvfileinside/warehouse/'">
+                    <button class="c-card__submit" onclick="location.href =  'admin/csvfileinside/warehouse/'">
                         Edit Data
                     </button>
                      {% else %}
-                     <button class="c-card__submit"id="tableButton"  onclick="location.href =  'admin/csvfileinside/profile/'">
+                     <button class="c-card__submit"  onclick="location.href =  'admin/csvfileinside/profile/'">
                         Edit Data
                     </button>
                      {% endif %}
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <!-- dB Credintials popup --1 -->
+    {% comment %} <!-- dB Credintials popup --1 -->
     <div id="popupid" class="popup__container">
         <div class="popup">
             <h2 class="popup__heading">Enter DB details</h2>
@@ -496,8 +496,8 @@
 
                 </div>
 
-            </div>
-            <div class="popup__button">
+            </div> {% endcomment %}
+            {% comment %} <div class="popup__button">
                 <div class="c-card__button h-mar">
                     <a class="c-card__submit" onclick="validate()" href="#popupid2">
                         Confirm
@@ -508,7 +508,7 @@
                         reset
                     </a>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
 

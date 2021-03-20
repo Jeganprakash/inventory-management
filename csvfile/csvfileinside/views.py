@@ -123,43 +123,16 @@ def warehouseadmin(request):
 def warehouse(request):
     template="base.html"
     return render(request,template,{'func':'warhouseData','function':'Warehousefetch()','type':'WareHouses','urlData':'ware-chart'})
-
-def pie_chart(request):
-
-    labels = []
-    data = []
-    template="pie_chart.html"
-    alldata = Profile.objects.all()
-    queryset = Profile.objects.order_by('Turnover_Days')
-    print(queryset)
-    n=1
-    for city in queryset:
-        try:
-            if((city.Turnover_Days)<=14 and (city.Turnover_Days) > 0 ):
-                    if(n<=5):
-                        labels.append(city.Statistics_Model)
-                        total = 100
-                        city.Turnover_Days = total - city.Turnover_Days
-                        data.append(city.Turnover_Days)
-                        n=n+1
-                        print(city.Turnover_Days)
-        except:
-            pass
-    return render(request,template, {
-        'labels': labels,
-        'data': data,
-    })
-
 def warehousepiechartfetch(request):
     labels=[]
     data=[]
     queryset = Warehouse.objects.order_by('Turnover_Days')
-    print(queryset)
+    # print(queryset)
     n=1
     for city in queryset:
         try:
-            if((city.Turnover_Days)<=20 and (city.Turnover_Days) > 0 ):
-                    if(n<=5):
+            if((city.Turnover_Days)<=50 and (city.Turnover_Days) > 0 ):
+                    if(n<=10):
                         labels.append(city.Warehouse)
                         data.append(city.Turnover_Days)
                         n=n+1
@@ -168,23 +141,52 @@ def warehousepiechartfetch(request):
     return JsonResponse(labels,safe=False)
 
 
-
 def piechartfetch(request):
     labels=[]
     data=[]
     queryset = Profile.objects.order_by('Turnover_Days')
-    print(queryset)
+    # print(queryset)
     n=1
     for city in queryset:
         try:
-            if((city.Turnover_Days)<=20 and (city.Turnover_Days) > 0 ):
-                    if(n<=5):
+            if((city.Turnover_Days)<=50 and (city.Turnover_Days) > 0 ):
+                    if(n<=10):
                         labels.append(city.Statistics_Model)
                         data.append(city.Turnover_Days)
                         n=n+1
+            print(n)
         except:
             pass
     return JsonResponse(labels,safe=False)
+
+
+def pie_chart(request):
+
+    labels = []
+    data = []
+    template="pie_chart.html"
+    alldata = Profile.objects.all()
+    queryset = Profile.objects.order_by('Turnover_Days')
+    # print(queryset)
+    n=1
+    for city in queryset:
+        try:
+            if((city.Turnover_Days)<=14 and (city.Turnover_Days) > 0 ):
+                    if(n<=10):
+                        labels.append(city.Statistics_Model)
+                        total = 100
+                        city.Turnover_Days = total - city.Turnover_Days
+                        data.append(city.Turnover_Days)
+                        n=n+1
+                        # print(city.Turnover_Days)
+        except:
+            pass
+    return render(request,template, {
+        'labels': labels,
+        'data': data,
+    })
+
+
 
 def warehousepiefetch(request):
     print("Hi")
@@ -198,7 +200,7 @@ def warehousepiefetch(request):
     for city in queryset:
             #print(city.Turnover_Days)
             if((city.Turnover_Days)<=14 and (city.Turnover_Days) > 0 ):
-                    if(n<=5):
+                    if(n<=10):
                         labels.append(city.Warehouse)
                         total = 100
                         city.Turnover_Days = total - city.Turnover_Days
