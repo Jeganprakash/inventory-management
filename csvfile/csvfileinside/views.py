@@ -171,7 +171,7 @@ def pie_chart(request):
     n=1
     for city in queryset:
         try:
-            if((city.Turnover_Days)<=14 and (city.Turnover_Days) > 0 ):
+            if((city.Turnover_Days)<=80 and (city.Turnover_Days) > 0 ):
                     if(n<=10):
                         labels.append(city.Statistics_Model)
                         total = 100
